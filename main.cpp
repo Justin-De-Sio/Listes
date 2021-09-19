@@ -16,11 +16,7 @@ void ListeSimple(void) {
 	delete Head;
 }
 
-
-int main()
-{
-	
-	
+void ListeSimpleV1() {
 	int i;
 	CList<int> liste;
 	for (int i = 1; i < 5; i++)
@@ -28,17 +24,17 @@ int main()
 		liste.push_front(i);
 	}
 	liste.Show();
-	
+
 	cout << "nombre a ajouter à la fin: ";
 	cin >> i;
 	liste.push_back(i);
 	liste.Show();
 
-	
+
 	cout << "nombre a ajouter: ";
 	cin >> i;
 	CNode<int>* ptr = liste.Find(i);
-	liste.Add(i, ptr);
+	liste.AddAfter(i, ptr);
 	liste.Show();
 
 	cout << ((ptr != NULL) ? " " : "non ") << "trouve" << endl;
@@ -47,5 +43,13 @@ int main()
 	cin >> i;
 	liste.Delete(liste.Find(i));
 	liste.Show();
+}
+
+
+int main()
+{
+	
+	ListeSimpleV1();
+	
 
 }

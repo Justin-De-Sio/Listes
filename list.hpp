@@ -24,12 +24,13 @@ public:
     CNode<T>* Find(const T& data) const;
 
     //ajout d'une valeur après un maillon de la liste
-    void Add(const T& data, CNode<T>*);
+    void AddAfter(const T& data, CNode<T>*);
 
     //détache un maillon de la liste et le supprime
     void Delete(CNode<T>*);
 
-   
+    //  GetNextNode ()
+    CNode<T>* Begin() const;
 
     
 };
@@ -83,7 +84,7 @@ template<typename T>
  }
 
  template<typename T>
- inline void CList<T>::Add(const T& data, CNode<T>* ptr)
+ inline void CList<T>::AddAfter(const T& data, CNode<T>* ptr)
  {
      if (ptr != nullptr) {
          CNode<T>* ptrTemp = new CNode<T>(data, ptr->GetNextNode());
@@ -110,4 +111,10 @@ template<typename T>
      ptr->SetNextNode(nullptr); 
      delete ptr;
 
+ }
+
+ template<typename T>
+ inline CNode<T>* CList<T>::Begin() const
+ {
+     return m_Head;
  }
