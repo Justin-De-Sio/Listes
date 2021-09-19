@@ -29,7 +29,7 @@ int main()
 	}
 	liste.Show();
 	
-	cout << "nombre a ajouter au début: ";
+	cout << "nombre a ajouter à la fin: ";
 	cin >> i;
 	liste.push_back(i);
 	liste.Show();
