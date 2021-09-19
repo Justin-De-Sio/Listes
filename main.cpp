@@ -9,27 +9,36 @@ void ListeSimple(void) {
 		Head = new CNode<int>(i, Head);
 	}
 
-	cout << "|   HEAD   | address : " << Head << " |\n";
+	
 
 	for (CNode<int>* ptr(Head); ptr != nullptr; ptr = ptr->GetNextNode())
 		cout << "| data : " << ptr->GetData() << " | address : " << ptr << " | next address : " << ptr->GetNextNode() << " |\n";
 	delete Head;
 }
+
+
 int main()
 {
-
+	
+	
+	int i;
 	CList<int> liste;
-	for (int i = 0; i < 8; i++)
+	for (int i = 1; i < 5; i++)
 	{
 		liste.push_front(i);
 	}
 	liste.Show();
 	
-	int i;
+	cout << "nombre a ajouter au début: ";
+	cin >> i;
+	liste.push_back(i);
+	liste.Show();
+
+	
 	cout << "nombre a ajouter: ";
 	cin >> i;
-	CNode<int>* ptr = liste.Find(5);
-	liste.Add(3 * 5, ptr);
+	CNode<int>* ptr = liste.Find(i);
+	liste.Add(i, ptr);
 	liste.Show();
 
 	cout << ((ptr != NULL) ? " " : "non ") << "trouve" << endl;
