@@ -25,7 +25,7 @@ void ListeSimpleV2()
 	}
 	liste.ShowAdvanced();
 
-	cout << "nombre a ajouter � la fin: ";
+	cout << "nombre a ajouter a la fin: ";
 	cin >> i;
 	liste.push_back(i);
 	liste.ShowAdvanced();
