@@ -10,15 +10,15 @@ private:
 public:
     CList(CNode<T>* head = nullptr);
     ~CList();
-    //ajout en tête de liste
+    //ajout en tï¿½te de liste
     void push_front(const T& data);
     //affichage
     void Show() const;
-    //recherche d'un élément dans la liste, renvoie le pointeur du maillon si l'élément est présent, nullptr sinon
+    //recherche d'un ï¿½lï¿½ment dans la liste, renvoie le pointeur du maillon si l'ï¿½lï¿½ment est prï¿½sent, nullptr sinon
     CNode<T>* Find(const T& data) const;
-    //ajout d'une valeur après un maillon de la liste
+    //ajout d'une valeur aprï¿½s un maillon de la liste
     void Add(const T& data, CNode<T>*);
-    //détache un maillon de la liste et le supprime
+    //dï¿½tache un maillon de la liste et le supprime
     void Delete(CNode<T>*);
 };
 
@@ -43,8 +43,8 @@ template<typename T>
  inline void CList<T>::Show() const
  {
      for(CNode<T>* ptr(m_Head);ptr!=nullptr;ptr=ptr->GetNextNode())
-        cout << "| data : " << ptr->GetData() << " | address : " << ptr << " | next address : " << ptr->GetNextNode() << " |\n";
-     cout << "\n";
+        std::cout << "| data : " << ptr->GetData() << " | address : " << ptr << " | next address : " << ptr->GetNextNode() << " |\n";
+     std::cout << "\n";
 
  }
 
