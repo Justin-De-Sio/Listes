@@ -1,50 +1,67 @@
+#ifndef NODE_HPP
+#define NODE_HPP
 
-#pragma once
+#include "memory"
 
-template <typename T>
-class CNode
-{
+template<typename T>
+class CNode {
 private:
     T m_Data;
-    CNode* m_NextNode;
+    std::shared_ptr<CNode> m_Next;
+    std::shared_ptr<CNode> m_Prev;
 public:
     //constructor
-    CNode(const T& data = T(), CNode* nextNode = nullptr);
-    //destructor
-    ~CNode();
+    explicit CNode(const T &val = T(), std::shared_ptr<CNode> ptrPrev = nullptr,
+                   std::shared_ptr<CNode> ptrNext = nullptr);
+
 
     //getter / setter
-    const T& GetData() const;
-    CNode* GetNextNode () const;
-    void SetData(const T& data);
-    void SetNextNode(CNode*);
+    const T &GetData() const;
+
+    std::shared_ptr<CNode> GetNextNode() const;
+
+    void SetNextNode(std::shared_ptr<CNode>);
+
+    std::shared_ptr<CNode> GetPrevNode() const;
+
+    void SetPrevNode(std::shared_ptr<CNode>);
 };
 
-template<typename T>
-CNode<T>::CNode(const T& data, CNode* nextNode): m_Data(data), m_NextNode(nextNode)
-{
-}
 
 template<typename T>
- CNode<T>::~CNode()
-{
-     delete m_NextNode;
+CNode<T>::CNode(const T &val, std::shared_ptr<CNode> ptrPrev, std::shared_ptr<CNode> ptrNext) :m_Data(val),
+                                                                                               m_Next(ptrNext),
+                                                                                               m_Prev(ptrPrev) {
+
 }
 
+
 template<typename T>
- const T & CNode<T>::GetData() const
-{
+const T &CNode<T>::GetData() const {
     return m_Data;
 }
 
 template<typename T>
- CNode<T>* CNode<T>::GetNextNode() const
-{
-    return m_NextNode;
+std::shared_ptr<CNode<T>> CNode<T>::GetNextNode() const {
+    return m_Next;
+}
+
+
+template<typename T>
+void CNode<T>::SetNextNode(std::shared_ptr<CNode> ANode) {
+    m_Next = ANode;
 }
 
 template<typename T>
- void CNode<T>::SetNextNode(CNode* NextNode)
-{
-    m_NextNode = NextNode;
+std::shared_ptr<CNode<T>> CNode<T>::GetPrevNode() const {
+    return m_Prev;
 }
+
+template<typename T>
+void CNode<T>::SetPrevNode(std::shared_ptr<CNode> prev) {
+    m_Prev = prev;
+
+}
+
+
+#endif // NODE_HPP
